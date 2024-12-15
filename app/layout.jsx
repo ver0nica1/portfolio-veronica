@@ -3,11 +3,14 @@ import { JetBrains_Mono } from "next/font/google";
 // Importa el archivo de estilos globales
 import "./globals.css";
 
+//components
+import Hearder from "@/components/Header";
+
 // Configura la fuente JetBrains Mono con las opciones especificadas
 const jetbrainsMono = JetBrains_Mono({
-  variable: '--font-jetbrainsMono', // Define una variable CSS para la fuente
+  variable: "--font-jetbrainsMono", // Define una variable CSS para la fuente
   subsets: ["latin"], // Especifica los subconjuntos de caracteres a incluir
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800"] // Especifica los pesos de la fuente a incluir
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800"],  // Especifica los pesos de la fuente a incluir
 });
 
 // Define los metadatos del documento HTML
@@ -19,10 +22,13 @@ export const metadata = {
 // Define el componente RootLayout que envuelve toda la aplicación
 export default function RootLayout({ children }) {
   return (
-    <html lang="en"> {/* Define el idioma del documento */}
-      <body className={jetbrainsMono.variable}> {/* Aplica la variable de la fuente al cuerpo del documento */}
-        {children} {/* Renderiza los componentes hijos */}
+    <html lang="en">{/* Define el idioma del documento */}
+    
+      <body className={jetbrainsMono.variable}>{/* Aplica la variable de la fuente al cuerpo del documento */}
+        <Hearder />
+        {children}{/* Renderiza los componentes hijos */}
       </body>
+
     </html>
   );
 }
