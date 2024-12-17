@@ -9,17 +9,17 @@ export default {
   theme: {
   	extend: {
   		colors: {
-			primary: '#1c1c22',
+			primary: 'rgb(15 23 42)',			
   			accent: {
-				DEFAULT: "#00ff99",
-				hover: "#00e187",
+				DEFAULT: "#0094f7",
+				hover: "#00e187",				
 			},
   		},
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)',
-  		},
+  		},		
   	},
 
 	//Estilos para el contenedor principal de la página en el layout de grid
@@ -39,5 +39,8 @@ export default {
 	},
 	
   },
+
+  darkMode: 'class',
+
   plugins: [require("tailwindcss-animate")],
 };
