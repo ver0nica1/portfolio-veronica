@@ -4,30 +4,28 @@ import { FaMoon } from "react-icons/fa";
 import { BsSunFill } from "react-icons/bs";
 
 const ThemeToggle = () => {
-
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const theme = localStorage.getItem('theme');
+      return theme === null || theme === 'dark'; // Predeterminado a oscuro si no hay tema almacenado
+    }
+    return true;
+  });
 
   useEffect(() => {
-    const theme = localStorage.getItem("theme");
-    if (theme === "dark") setDarkMode(true); 
-  }, [])
-
-  useEffect(() => {
-
-    if (darkMode){
+    if (darkMode) {
       document.documentElement.classList.add('dark');
       localStorage.setItem("theme", "dark");
-    }else{
+    } else {
       document.documentElement.classList.remove('dark');
-      localStorage.setItem("theme", "dark");
+      localStorage.setItem("theme", "light");
     }
-
-  }, [darkMode])
+  }, [darkMode]);
 
   return (
-    <div
+    <button
       className="relative w-16 h-8 flex items-center 
-                dark:bg-gray-800 bg-[#C8B6F8]/90 cursor-pointer rounded-full p-1"
+                dark:bg-[#263c73b3] bg-[#C8B6F8]/90 cursor-pointer rounded-full p-1 focus:outline-none"
       onClick={() => setDarkMode(!darkMode)}
     >
       <BsSunFill className="text-black" size={18} />
@@ -35,11 +33,9 @@ const ThemeToggle = () => {
         style={darkMode ? { left: "2px" } : { right: "2px" } }
       >        
       </div>
-
       <FaMoon className="ml-auto text-white" size={18} />
-
-    </div>
-  )
-}
+    </button>
+  );
+};
 
 export default ThemeToggle;
